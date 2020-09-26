@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] bool isLeft = false;
     [SerializeField] [Range(0,10)] float projectileSpeed=1f;
+    [SerializeField] int damage = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,18 @@ public class Projectile : MonoBehaviour
         {
             transform.Translate(Vector2.left * Time.deltaTime * projectileSpeed);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var healthComponent = collision.GetComponent<Health>();
+        var attacker = collision.GetComponent<Attacker>();
+        if (healthComponent&&attacker)
+        {
+            healthComponent.DealDamage(damage);
+            Destroy(gameObject);
+        }
+    
     }
 
 
