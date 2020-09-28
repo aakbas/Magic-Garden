@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackerSpawner : MonoBehaviour
 {
     //configParams
-    [SerializeField] GameObject enemyPrefab;
+    [SerializeField] Attacker enemyPrefab;
     [SerializeField] int minSpawnDelay=1;
     [SerializeField] int maxSpawnDelay=5; 
     bool spawn = true;
@@ -26,7 +26,9 @@ public class AttackerSpawner : MonoBehaviour
 
     private void SpawnAttacker()
     {
-        Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+        Attacker newAttacker= Instantiate(enemyPrefab, transform.position, Quaternion.identity)as Attacker;
+        newAttacker.transform.parent = transform;
+
     }
 
     // Update is called once per frame
