@@ -38,4 +38,10 @@ public class StarDisplay : MonoBehaviour
         
     }
 
+    public bool HaveEnoughStars(int amount)
+    {
+        return stars >= amount;
+
+    }
+
 }
