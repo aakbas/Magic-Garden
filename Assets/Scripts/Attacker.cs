@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +22,15 @@ public class Attacker : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.left * Time.deltaTime*currentSpeed);
+        UpdateAnimationState();
+    }
+
+    private void UpdateAnimationState()
+    {
+        if (!currentTarget)
+        {
+            GetComponent<Animator>().SetBool("isAtacking", false);
+        }
     }
 
     public void SetMovementSpeed(float speed)

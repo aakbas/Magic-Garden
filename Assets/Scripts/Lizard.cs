@@ -5,7 +5,7 @@ using UnityEngine;
 public class Lizard : MonoBehaviour
 {
 
-    [SerializeField] int damage = 25;
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject otherObject = collision.gameObject;
