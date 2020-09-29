@@ -23,11 +23,16 @@ public class Base : MonoBehaviour
     private void BaseHit(Collider2D collision)
     {
         baseHealth -= 1;
+        GameOver();
+        Destroy(collision.gameObject);
+    }
+
+    private void GameOver()
+    {
         if (baseHealth <= 0)
         {
-            Debug.Log("Game Over");
+            FindObjectOfType<LevelLoader>().LoadGameOver();
         }
-        Destroy(collision.gameObject);
     }
 
     private void updateHealth()

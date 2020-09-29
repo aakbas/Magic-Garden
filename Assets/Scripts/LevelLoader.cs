@@ -26,16 +26,30 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
+    public void LoadGameOver()
+    {
+        SceneManager.LoadScene("Game Over");
+    }
 
     public void LoadStartScene()
     {
         StartCoroutine(DelayAndLoad("Start Scene"));
     }
 
+    public void LoadSplash()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     IEnumerator DelayAndLoad(string sceneName)
     {
         yield return new WaitForSeconds(delayTime);
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
 
