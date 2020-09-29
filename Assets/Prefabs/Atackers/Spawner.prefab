@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000210e9c4f9140499b0fd91430ad33d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 5298339453828907118, guid: d96322ece0d1f5147aa28aec0c9ef293,
-    type: 3}
-  minSpawnDelay: 1
-  maxSpawnDelay: 5
+  enemyPrefabs:
+  - {fileID: 5083395025927041242, guid: 33021bc4af4c63141b5eebd66a8c435b, type: 3}
+  - {fileID: 5298339453828907118, guid: d96322ece0d1f5147aa28aec0c9ef293, type: 3}
+  minSpawnDelay: 7
+  maxSpawnDelay: 10

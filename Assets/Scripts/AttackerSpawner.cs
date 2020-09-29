@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AttackerSpawner : MonoBehaviour
 {
     //configParams
-    [SerializeField] Attacker enemyPrefab;
+    [SerializeField] Attacker[] enemyPrefabs;
     [SerializeField] int minSpawnDelay=1;
     [SerializeField] int maxSpawnDelay=5; 
     bool spawn = true;
@@ -26,7 +27,8 @@ public class AttackerSpawner : MonoBehaviour
 
     private void SpawnAttacker()
     {
-        Attacker newAttacker= Instantiate(enemyPrefab, transform.position, Quaternion.identity)as Attacker;
+        int randomAtackerIndex = Random.Range(0, enemyPrefabs.Length);
+        Attacker newAttacker= Instantiate(enemyPrefabs[randomAtackerIndex], transform.position, Quaternion.identity)as Attacker;
         newAttacker.transform.parent = transform;
 
     }
