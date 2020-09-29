@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Attacker : MonoBehaviour
 {
-    [Header ("Movement")]
+  
     float currentSpeed= 0f;
+    GameObject currentTarget;
 
    
    
@@ -27,7 +28,21 @@ public class Attacker : MonoBehaviour
         currentSpeed = speed;
     }
 
- 
+  public void Attack(GameObject target)
+    {
+       
+        GetComponent<Animator>().SetBool("isAtacking", true);       
+        currentTarget = target;
+    }
 
+    public void StrikeCurrentTarget(int damage)
+    {
+        if (!currentTarget) { return; }
+        Health health = currentTarget.GetComponent<Health>();
+        if (health)
+        {
+            health.DealDamage(damage);
+        }
+    }
 
 }
