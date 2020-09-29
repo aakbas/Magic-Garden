@@ -6,14 +6,20 @@ using UnityEngine.UI;
 public class GameTimer : MonoBehaviour
 {
     [SerializeField] float levelTime = 10f;
+    bool triggeredLevelFinished = false;
 
     void Update()
     {
+        if (triggeredLevelFinished) { return; }
         GetComponent<Slider>().value = Time.timeSinceLevelLoad / levelTime;
         bool timerFinished = (Time.timeSinceLevelLoad >= levelTime);
         if(timerFinished)
         {
-            //TODO STOP SPAWNERS
+            FindObjectOfType<LevelController>().IsTimerFinished();
         }
     }
+
+
+
+
 }

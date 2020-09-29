@@ -24,7 +24,7 @@ public class Base : MonoBehaviour
     {
         baseHealth -= 1;
         GameOver();
-        Destroy(collision.gameObject);
+        Destroy(collision.gameObject);        
     }
 
     private void GameOver()

@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
 
     [SerializeField] int health = 5;
     [SerializeField] GameObject deathVFX;
+  
 
  
 
@@ -21,9 +22,10 @@ public class Health : MonoBehaviour
         if (health <= 0)
         {
             TriggerDeathVFX();
-            Destroy(gameObject);           
+            Destroy(gameObject);       
 
         }
+       
     }
 
     private void TriggerDeathVFX()
@@ -33,5 +35,6 @@ public class Health : MonoBehaviour
         Destroy(deathVFXObject,1f);
     }
 
+   
 
 }
