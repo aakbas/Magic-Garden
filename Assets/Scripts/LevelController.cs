@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
+    [SerializeField] GameObject winLabel;
     [SerializeField] int attackerDeath=0;
     [SerializeField] int attackerSpawned = 0;
     [SerializeField] bool isTimerFinished = false;
+    [SerializeField] AudioClip winSFX;
 
-
+    private void Start()
+    {
+        winLabel.SetActive(false);
+    }
     private void Update()
     {
         EndLevel();
@@ -27,7 +32,7 @@ public class LevelController : MonoBehaviour
     {
         if (attackerSpawned == attackerDeath && isTimerFinished)
         {
-            Debug.Log("End Level Now!");
+            StartCoroutine(WinScreen());
         }
     }
 
@@ -46,6 +51,13 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    IEnumerator WinScreen()
+    {
+        FindObjectOfType<AudioSource>().PlayOneShot(winSFX);
+        winLabel.SetActive(true);
+        yield return new WaitForSeconds(3);
+        FindObjectOfType<LevelLoader>().LoadNextScene();
+    }
 
 
    
